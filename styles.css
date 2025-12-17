@@ -154,6 +154,26 @@ h1 { margin: 0 0 16px; font-size: 28px; text-align: center; }
 }
 .todo-text { word-break: break-word; flex: 1; }
 
+.todo-list li.completed .todo-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.complete-btn {
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.complete-btn:hover { background: #1f2937; }
+
+.todo-list li.completed .complete-btn {
+  opacity: 0.5;
+}
+
 .delete-btn {
   border: 1px solid #334155;
   background: #0f172a;
