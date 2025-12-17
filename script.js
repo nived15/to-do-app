@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     completeBtn.addEventListener('click', () => {
       li.classList.toggle('completed');
+      const isCompleted = li.classList.contains('completed');
+      completeBtn.setAttribute('aria-label', isCompleted ? 'Mark as incomplete' : 'Mark as complete');
       input.focus();
     });
 
