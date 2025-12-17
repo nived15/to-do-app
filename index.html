@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simple To‑Do App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app" aria-labelledby="app-title">
+    <h1 id="app-title">To‑Do</h1>
+
+    <form id="todo-form" autocomplete="off" aria-describedby="helper-text">
+      <input
+        id="todo-input"
+        name="todo"
+        type="text"
+        placeholder="Add a to‑do…"
+        aria-label="New to‑do"
+      />
+      <button id="add-btn" type="submit" aria-label="Add to‑do">Add</button>
+    </form>
+    <p id="helper-text" class="helper">Press Enter or click Add</p>
+
+    <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
