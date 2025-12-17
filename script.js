@@ -10,6 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
     span.className = 'todo-text';
     span.textContent = text;
 
+    const completeBtn = document.createElement('button');
+    completeBtn.className = 'complete-btn';
+    completeBtn.type = 'button';
+    completeBtn.setAttribute('aria-label', 'Mark as complete');
+    completeBtn.textContent = '👍';
+
+    completeBtn.addEventListener('click', () => {
+      li.classList.toggle('completed');
+      input.focus();
+    });
+
     const del = document.createElement('button');
     del.className = 'delete-btn';
     del.type = 'button';
@@ -22,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     li.appendChild(span);
+    li.appendChild(completeBtn);
     li.appendChild(del);
     return li;
   }
