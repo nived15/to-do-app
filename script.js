@@ -1,7 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('todo-form');
   const input = document.getElementById('todo-input');
-  const list = document.getElementById('todo-list');
+  const urgentCheckbox = document.getElementById('urgent-checkbox');
+  const importantCheckbox = document.getElementById('important-checkbox');
+
+  function getQuadrant(isUrgent, isImportant) {
+    if (isUrgent && isImportant) {
+      return 'urgent-important';
+    } else if (!isUrgent && isImportant) {
+      return 'not-urgent-important';
+    } else if (isUrgent && !isImportant) {
+      return 'urgent-not-important';
+    } else {
+      return 'not-urgent-not-important';
+    }
+  }
 
   function createItem(text) {
     const li = document.createElement('li');
@@ -26,22 +39,30 @@ document.addEventListener('DOMContentLoaded', () => {
     return li;
   }
 
-  function addTodo(text) {
+  function addTodo(text, isUrgent, isImportant) {
     const trimmed = text.trim();
     if (!trimmed) return;
-    list.appendChild(createItem(trimmed));
+    
+    const quadrant = getQuadrant(isUrgent, isImportant);
+    const quadrantList = document.querySelector(`[data-quadrant="${quadrant}"]`);
+    
+    if (quadrantList) {
+      quadrantList.appendChild(createItem(trimmed));
+    } else {
+      console.error(`Quadrant element not found: ${quadrant}`);
+    }
   }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    addTodo(input.value);
+    const isUrgent = urgentCheckbox.checked;
+    const isImportant = importantCheckbox.checked;
+    
+    addTodo(input.value, isUrgent, isImportant);
+    
     input.value = '';
+    urgentCheckbox.checked = false;
+    importantCheckbox.checked = false;
     input.focus();
-  });
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      // Handled by form submit, but keep for clarity in some browsers
-    }
   });
 });

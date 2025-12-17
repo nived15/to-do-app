@@ -8,21 +8,54 @@
 </head>
 <body>
   <main class="app" aria-labelledby="app-title">
-    <h1 id="app-title">To‑Do</h1>
+    <h1 id="app-title">To‑Do - Eisenhower Matrix</h1>
 
     <form id="todo-form" autocomplete="off" aria-describedby="helper-text">
-      <input
-        id="todo-input"
-        name="todo"
-        type="text"
-        placeholder="Add a to‑do…"
-        aria-label="New to‑do"
-      />
+      <div class="form-input-group">
+        <input
+          id="todo-input"
+          name="todo"
+          type="text"
+          placeholder="Add a to‑do…"
+          aria-label="New to‑do"
+        />
+        <div class="priority-checkboxes">
+          <label class="checkbox-label">
+            <input type="checkbox" id="urgent-checkbox" name="urgent" />
+            <span>Urgent</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="important-checkbox" name="important" />
+            <span>Important</span>
+          </label>
+        </div>
+      </div>
       <button id="add-btn" type="submit" aria-label="Add to‑do">Add</button>
     </form>
-    <p id="helper-text" class="helper">Press Enter or click Add</p>
+    <p id="helper-text" class="helper">Check priority and press Enter or click Add</p>
 
-    <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+    <div class="matrix-container">
+      <div class="quadrant urgent-important">
+        <h2 class="quadrant-title">Urgent & Important</h2>
+        <p class="quadrant-subtitle">Do First</p>
+        <ul class="todo-list" data-quadrant="urgent-important" aria-live="polite"></ul>
+      </div>
+      <div class="quadrant not-urgent-important">
+        <h2 class="quadrant-title">Not Urgent & Important</h2>
+        <p class="quadrant-subtitle">Schedule</p>
+        <ul class="todo-list" data-quadrant="not-urgent-important" aria-live="polite"></ul>
+      </div>
+      <div class="quadrant urgent-not-important">
+        <h2 class="quadrant-title">Urgent & Not Important</h2>
+        <p class="quadrant-subtitle">Delegate</p>
+        <ul class="todo-list" data-quadrant="urgent-not-important" aria-live="polite"></ul>
+      </div>
+      <div class="quadrant not-urgent-not-important">
+        <h2 class="quadrant-title">Not Urgent & Not Important</h2>
+        <p class="quadrant-subtitle">Eliminate</p>
+        <ul class="todo-list" data-quadrant="not-urgent-not-important" aria-live="polite"></ul>
+      </div>
+    </div>
   </main>
 
   <script src="script.js"></script>
