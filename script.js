@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (quadrantList) {
       quadrantList.appendChild(createItem(trimmed));
+    } else {
+      console.error(`Quadrant element not found: ${quadrant}`);
     }
   }
 
@@ -62,11 +64,5 @@ document.addEventListener('DOMContentLoaded', () => {
     urgentCheckbox.checked = false;
     importantCheckbox.checked = false;
     input.focus();
-  });
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      // Handled by form submit, but keep for clarity in some browsers
-    }
   });
 });
