@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('Notification' in window && Notification.permission === 'granted') {
       new Notification('To-Do Reminder', {
         body: todo.text,
-        icon: '📋',
         tag: todo.id
       });
     } else {
@@ -205,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!trimmed) return;
     
     const todo = {
-      id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+      id: Date.now().toString() + Math.random().toString(36).substring(2, 9),
       text: trimmed,
       urgent: isUrgent,
       important: isImportant,
